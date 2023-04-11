@@ -2,8 +2,14 @@
 
 set -e
 
-INCLUDE=${PROTO_HOME:-/usr/local/include}
+rm -rf src
+mkdir src
 
-mkdir -p google
-cp -r $INCLUDE/google/protobuf google/protobuf
-#protoc --plugin="protoc-gen-elm=${PWD}/index.js" --elm_out=src google/protobuf/compiler/plugin.proto google/protobuf/descriptor.proto
+docker run \
+  -v $(pwd)/src:/workdir \
+  $(docker build -q .) sh \
+  -c "protoc --elm_out=. $(find /usr/local/include/google/protobuf -type f -printf '%p ') && elm-format --yes ."
+
+elm make $(find src -type f -printf '%p ')
+
+git add .

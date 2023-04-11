@@ -20,8 +20,9 @@ You can do this yourself, but this might be useful if you want to skip this part
 
 ## Future ideas
 
-- This package could potentially add more community-liked utility types independent from `protoc`s well-known types.
 - Some utility types are not quite in the "Elm format" - timestamp for instance consists of a `secs` and `nanos` field whereas Elms `time` package prefers using the `Posix` Type, which is a wrapper around a number of milliseconds. This package could provide common conversions.
 
 Feel free to open an issue/create a pull request if you have a suggestion or need one of the above ideas implemented.
+
+There are no plans to add .proto generated types other than the well-known types.
 
