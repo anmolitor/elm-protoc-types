@@ -2,6 +2,8 @@
 
 Protobufs Well-Known Types as an Elm Package. Generated via protoc-gen-elm.
 
+** MOVED TO anmolitor/elm-protoc-types **
+
 ## What is this?
 
 [Protocol buffers](https://protobuf.dev/) are a serialization format. The idea is that you write `.proto` files describing your data structures and then generate source code from them in your favourite languages using the [protoc compiler](https://github.com/protocolbuffers/protobuf/releases/tag/v22.2) and the respective language plugins.
