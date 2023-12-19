@@ -2,7 +2,7 @@
 
 Protobufs Well-Known Types as an Elm Package. Generated via protoc-gen-elm.
 
-** MOVED TO anmolitor/elm-protoc-types **
+** MOVED TO https://package.elm-lang.org/packages/anmolitor/elm-protoc-types/latest/ **
 
 ## What is this?
 
