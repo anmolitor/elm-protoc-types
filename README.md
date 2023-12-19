@@ -14,7 +14,7 @@ These are
 - Useful utilities (`Timestamp`, `Duration`, `Empty`, `FieldMask`)
 
 This package was created/is updated by running `protoc` with the
-[protoc-gen-elm](https://github.com/andreasewering/protoc-gen-elm) plugin on the directory included in the `protoc` installation.
+[protoc-gen-elm](https://github.com/anmolitor/protoc-gen-elm) plugin on the directory included in the `protoc` installation.
 
 You can do this yourself, but this might be useful if you want to skip this part of your build process.
 
