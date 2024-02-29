@@ -2,61 +2,70 @@
 
 
 module Proto.Google.Protobuf exposing
-    ( Any, Api, BoolValue, BytesValue, DescriptorProto, DescriptorProto_, DoubleValue, Duration, Empty, Enum, EnumDescriptorProto, EnumOptions
-    , EnumValue, EnumValueDescriptorProto, EnumValueOptions, ExtensionRangeOptions, Field, FieldDescriptorProto, FieldMask, FieldOptions
-    , FileDescriptorProto, FileDescriptorSet, FileOptions, FloatValue, GeneratedCodeInfo, Int32Value, Int64Value, ListValue, MessageOptions
-    , Method, MethodDescriptorProto, MethodOptions, Mixin, NullValue(..), OneofDescriptorProto, OneofOptions, Option, ServiceDescriptorProto
-    , ServiceOptions, SourceCodeInfo, SourceContext, StringValue, Struct, Syntax(..), Timestamp, Type, UInt32Value, UInt64Value, UninterpretedOption
-    , Value, decodeAny, decodeApi, decodeBoolValue, decodeBytesValue, decodeDescriptorProto, decodeDoubleValue, decodeDuration, decodeEmpty
-    , decodeEnum, decodeEnumDescriptorProto, decodeEnumOptions, decodeEnumValue, decodeEnumValueDescriptorProto, decodeEnumValueOptions
-    , decodeExtensionRangeOptions, decodeField, decodeFieldDescriptorProto, decodeFieldMask, decodeFieldOptions
-    , decodeFileDescriptorProto, decodeFileDescriptorSet, decodeFileOptions, decodeFloatValue, decodeGeneratedCodeInfo, decodeInt32Value
-    , decodeInt64Value, decodeListValue, decodeMessageOptions, decodeMethod, decodeMethodDescriptorProto, decodeMethodOptions, decodeMixin
-    , decodeNullValue, decodeOneofDescriptorProto, decodeOneofOptions, decodeOption, decodeServiceDescriptorProto, decodeServiceOptions
-    , decodeSourceCodeInfo, decodeSourceContext, decodeStringValue, decodeStruct, decodeSyntax, decodeTimestamp, decodeType
-    , decodeUInt32Value, decodeUInt64Value, decodeUninterpretedOption, decodeValue, defaultAny, defaultApi, defaultBoolValue
-    , defaultBytesValue, defaultDescriptorProto, defaultDoubleValue, defaultDuration, defaultEmpty, defaultEnum
+    ( Any, Api, BoolValue, BytesValue, DescriptorProto, DescriptorProto_, DoubleValue, Duration, Empty, Enum, EnumDescriptorProto
+    , EnumOptions, EnumValue, EnumValueDescriptorProto, EnumValueOptions, ExtensionRangeOptions, Field, FieldDescriptorProto, FieldMask
+    , FieldOptions, FileDescriptorProto, FileDescriptorSet, FileOptions, FloatValue, GeneratedCodeInfo, Int32Value, Int64Value, ListValue
+    , ListValue_, MessageOptions, Method, MethodDescriptorProto, MethodOptions, Mixin, OneofDescriptorProto, OneofOptions, Option
+    , ServiceDescriptorProto, ServiceOptions, SourceCodeInfo, SourceContext, StringValue, Struct, Timestamp, Type, UInt32Value, UInt64Value
+    , UninterpretedOption, Value, Value_, decodeAny, decodeApi, decodeBoolValue, decodeBytesValue, decodeDescriptorProto
+    , decodeDoubleValue, decodeDuration, decodeEmpty, decodeEnum, decodeEnumDescriptorProto, decodeEnumOptions, decodeEnumValue
+    , decodeEnumValueDescriptorProto, decodeEnumValueOptions, decodeExtensionRangeOptions, decodeField, decodeFieldDescriptorProto
+    , decodeFieldMask, decodeFieldOptions, decodeFileDescriptorProto, decodeFileDescriptorSet, decodeFileOptions, decodeFloatValue
+    , decodeGeneratedCodeInfo, decodeInt32Value, decodeInt64Value, decodeListValue, decodeMessageOptions, decodeMethod
+    , decodeMethodDescriptorProto, decodeMethodOptions, decodeMixin, decodeOneofDescriptorProto, decodeOneofOptions, decodeOption
+    , decodeServiceDescriptorProto, decodeServiceOptions, decodeSourceCodeInfo, decodeSourceContext, decodeStringValue, decodeStruct
+    , decodeTimestamp, decodeType, decodeUInt32Value, decodeUInt64Value, decodeUninterpretedOption, decodeValue, defaultAny, defaultApi
+    , defaultBoolValue, defaultBytesValue, defaultDescriptorProto, defaultDoubleValue, defaultDuration, defaultEmpty, defaultEnum
     , defaultEnumDescriptorProto, defaultEnumOptions, defaultEnumValue, defaultEnumValueDescriptorProto, defaultEnumValueOptions
     , defaultExtensionRangeOptions, defaultField, defaultFieldDescriptorProto, defaultFieldMask, defaultFieldOptions
     , defaultFileDescriptorProto, defaultFileDescriptorSet, defaultFileOptions, defaultFloatValue, defaultGeneratedCodeInfo
     , defaultInt32Value, defaultInt64Value, defaultListValue, defaultMessageOptions, defaultMethod, defaultMethodDescriptorProto
-    , defaultMethodOptions, defaultMixin, defaultNullValue, defaultOneofDescriptorProto, defaultOneofOptions, defaultOption
-    , defaultServiceDescriptorProto, defaultServiceOptions, defaultSourceCodeInfo, defaultSourceContext, defaultStringValue
-    , defaultStruct, defaultSyntax, defaultTimestamp, defaultType, defaultUInt32Value, defaultUInt64Value, defaultUninterpretedOption
-    , defaultValue, encodeAny, encodeApi, encodeBoolValue, encodeBytesValue, encodeDescriptorProto, encodeDoubleValue, encodeDuration
-    , encodeEmpty, encodeEnum, encodeEnumDescriptorProto, encodeEnumOptions, encodeEnumValue, encodeEnumValueDescriptorProto
-    , encodeEnumValueOptions, encodeExtensionRangeOptions, encodeField, encodeFieldDescriptorProto, encodeFieldMask, encodeFieldOptions
-    , encodeFileDescriptorProto, encodeFileDescriptorSet, encodeFileOptions, encodeFloatValue, encodeGeneratedCodeInfo, encodeInt32Value
-    , encodeInt64Value, encodeListValue, encodeMessageOptions, encodeMethod, encodeMethodDescriptorProto, encodeMethodOptions, encodeMixin
-    , encodeNullValue, encodeOneofDescriptorProto, encodeOneofOptions, encodeOption, encodeServiceDescriptorProto, encodeServiceOptions
-    , encodeSourceCodeInfo, encodeSourceContext, encodeStringValue, encodeStruct, encodeSyntax, encodeTimestamp, encodeType
-    , encodeUInt32Value, encodeUInt64Value, encodeUninterpretedOption, encodeValue, fieldNumbersAny, fieldNumbersApi
-    , fieldNumbersBoolValue, fieldNumbersBytesValue, fieldNumbersDescriptorProto, fieldNumbersDoubleValue, fieldNumbersDuration
-    , fieldNumbersEmpty, fieldNumbersEnum, fieldNumbersEnumDescriptorProto, fieldNumbersEnumOptions, fieldNumbersEnumValue
-    , fieldNumbersEnumValueDescriptorProto, fieldNumbersEnumValueOptions, fieldNumbersExtensionRangeOptions, fieldNumbersField
-    , fieldNumbersFieldDescriptorProto, fieldNumbersFieldMask, fieldNumbersFieldOptions, fieldNumbersFileDescriptorProto
-    , fieldNumbersFileDescriptorSet, fieldNumbersFileOptions, fieldNumbersFloatValue, fieldNumbersGeneratedCodeInfo
-    , fieldNumbersInt32Value, fieldNumbersInt64Value, fieldNumbersListValue, fieldNumbersMessageOptions, fieldNumbersMethod
-    , fieldNumbersMethodDescriptorProto, fieldNumbersMethodOptions, fieldNumbersMixin, fieldNumbersNullValue
+    , defaultMethodOptions, defaultMixin, defaultOneofDescriptorProto, defaultOneofOptions, defaultOption, defaultServiceDescriptorProto
+    , defaultServiceOptions, defaultSourceCodeInfo, defaultSourceContext, defaultStringValue, defaultStruct, defaultTimestamp, defaultType
+    , defaultUInt32Value, defaultUInt64Value, defaultUninterpretedOption, defaultValue, encodeAny, encodeApi, encodeBoolValue
+    , encodeBytesValue, encodeDescriptorProto, encodeDoubleValue, encodeDuration, encodeEmpty, encodeEnum, encodeEnumDescriptorProto
+    , encodeEnumOptions, encodeEnumValue, encodeEnumValueDescriptorProto, encodeEnumValueOptions, encodeExtensionRangeOptions
+    , encodeField, encodeFieldDescriptorProto, encodeFieldMask, encodeFieldOptions, encodeFileDescriptorProto, encodeFileDescriptorSet
+    , encodeFileOptions, encodeFloatValue, encodeGeneratedCodeInfo, encodeInt32Value, encodeInt64Value, encodeListValue
+    , encodeMessageOptions, encodeMethod, encodeMethodDescriptorProto, encodeMethodOptions, encodeMixin, encodeOneofDescriptorProto
+    , encodeOneofOptions, encodeOption, encodeServiceDescriptorProto, encodeServiceOptions, encodeSourceCodeInfo, encodeSourceContext
+    , encodeStringValue, encodeStruct, encodeTimestamp, encodeType, encodeUInt32Value, encodeUInt64Value, encodeUninterpretedOption
+    , encodeValue, fieldNumbersAny, fieldNumbersApi, fieldNumbersBoolValue, fieldNumbersBytesValue, fieldNumbersDescriptorProto
+    , fieldNumbersDoubleValue, fieldNumbersDuration, fieldNumbersEmpty, fieldNumbersEnum, fieldNumbersEnumDescriptorProto
+    , fieldNumbersEnumOptions, fieldNumbersEnumValue, fieldNumbersEnumValueDescriptorProto, fieldNumbersEnumValueOptions
+    , fieldNumbersExtensionRangeOptions, fieldNumbersField, fieldNumbersFieldDescriptorProto, fieldNumbersFieldMask
+    , fieldNumbersFieldOptions, fieldNumbersFileDescriptorProto, fieldNumbersFileDescriptorSet, fieldNumbersFileOptions
+    , fieldNumbersFloatValue, fieldNumbersGeneratedCodeInfo, fieldNumbersInt32Value, fieldNumbersInt64Value, fieldNumbersListValue
+    , fieldNumbersMessageOptions, fieldNumbersMethod, fieldNumbersMethodDescriptorProto, fieldNumbersMethodOptions, fieldNumbersMixin
     , fieldNumbersOneofDescriptorProto, fieldNumbersOneofOptions, fieldNumbersOption, fieldNumbersServiceDescriptorProto
     , fieldNumbersServiceOptions, fieldNumbersSourceCodeInfo, fieldNumbersSourceContext, fieldNumbersStringValue, fieldNumbersStruct
-    , fieldNumbersSyntax, fieldNumbersTimestamp, fieldNumbersType, fieldNumbersUInt32Value, fieldNumbersUInt64Value
-    , fieldNumbersUninterpretedOption, fieldNumbersValue, fromInternalNullValue, fromInternalSyntax, jsonEncodeAny, jsonEncodeApi
-    , jsonEncodeBoolValue, jsonEncodeBytesValue, jsonEncodeDescriptorProto, jsonEncodeDoubleValue, jsonEncodeDuration, jsonEncodeEmpty
-    , jsonEncodeEnum, jsonEncodeEnumDescriptorProto, jsonEncodeEnumOptions, jsonEncodeEnumValue, jsonEncodeEnumValueDescriptorProto
+    , fieldNumbersTimestamp, fieldNumbersType, fieldNumbersUInt32Value, fieldNumbersUInt64Value, fieldNumbersUninterpretedOption
+    , fieldNumbersValue, jsonDecodeAny, jsonDecodeApi, jsonDecodeBoolValue, jsonDecodeBytesValue, jsonDecodeDescriptorProto
+    , jsonDecodeDoubleValue, jsonDecodeDuration, jsonDecodeEmpty, jsonDecodeEnum, jsonDecodeEnumDescriptorProto, jsonDecodeEnumOptions
+    , jsonDecodeEnumValue, jsonDecodeEnumValueDescriptorProto, jsonDecodeEnumValueOptions, jsonDecodeExtensionRangeOptions
+    , jsonDecodeField, jsonDecodeFieldDescriptorProto, jsonDecodeFieldMask, jsonDecodeFieldOptions, jsonDecodeFileDescriptorProto
+    , jsonDecodeFileDescriptorSet, jsonDecodeFileOptions, jsonDecodeFloatValue, jsonDecodeGeneratedCodeInfo, jsonDecodeInt32Value
+    , jsonDecodeInt64Value, jsonDecodeListValue, jsonDecodeMessageOptions, jsonDecodeMethod, jsonDecodeMethodDescriptorProto
+    , jsonDecodeMethodOptions, jsonDecodeMixin, jsonDecodeOneofDescriptorProto, jsonDecodeOneofOptions, jsonDecodeOption
+    , jsonDecodeServiceDescriptorProto, jsonDecodeServiceOptions, jsonDecodeSourceCodeInfo, jsonDecodeSourceContext
+    , jsonDecodeStringValue, jsonDecodeStruct, jsonDecodeTimestamp, jsonDecodeType, jsonDecodeUInt32Value, jsonDecodeUInt64Value
+    , jsonDecodeUninterpretedOption, jsonDecodeValue, jsonEncodeAny, jsonEncodeApi, jsonEncodeBoolValue, jsonEncodeBytesValue
+    , jsonEncodeDescriptorProto, jsonEncodeDoubleValue, jsonEncodeDuration, jsonEncodeEmpty, jsonEncodeEnum
+    , jsonEncodeEnumDescriptorProto, jsonEncodeEnumOptions, jsonEncodeEnumValue, jsonEncodeEnumValueDescriptorProto
     , jsonEncodeEnumValueOptions, jsonEncodeExtensionRangeOptions, jsonEncodeField, jsonEncodeFieldDescriptorProto
     , jsonEncodeFieldMask, jsonEncodeFieldOptions, jsonEncodeFileDescriptorProto, jsonEncodeFileDescriptorSet, jsonEncodeFileOptions
     , jsonEncodeFloatValue, jsonEncodeGeneratedCodeInfo, jsonEncodeInt32Value, jsonEncodeInt64Value, jsonEncodeListValue
     , jsonEncodeMessageOptions, jsonEncodeMethod, jsonEncodeMethodDescriptorProto, jsonEncodeMethodOptions, jsonEncodeMixin
-    , jsonEncodeNullValue, jsonEncodeOneofDescriptorProto, jsonEncodeOneofOptions, jsonEncodeOption, jsonEncodeServiceDescriptorProto
+    , jsonEncodeOneofDescriptorProto, jsonEncodeOneofOptions, jsonEncodeOption, jsonEncodeServiceDescriptorProto
     , jsonEncodeServiceOptions, jsonEncodeSourceCodeInfo, jsonEncodeSourceContext, jsonEncodeStringValue, jsonEncodeStruct
-    , jsonEncodeSyntax, jsonEncodeTimestamp, jsonEncodeType, jsonEncodeUInt32Value, jsonEncodeUInt64Value, jsonEncodeUninterpretedOption
-    , jsonEncodeValue, toInternalNullValue, toInternalSyntax, unwrapDescriptorProto, wrapDescriptorProto
+    , jsonEncodeTimestamp, jsonEncodeType, jsonEncodeUInt32Value, jsonEncodeUInt64Value, jsonEncodeUninterpretedOption, jsonEncodeValue
+    , unwrapDescriptorProto, unwrapListValue, unwrapValue, wrapDescriptorProto
+    , wrapListValue, wrapValue
     )
 
 {-| This file was automatically generated by
 
-  - [`protoc-gen-elm`](https://www.npmjs.com/package/protoc-gen-elm) 3.3.4
+  - [`protoc-gen-elm`](https://www.npmjs.com/package/protoc-gen-elm) 4.0.0
   - `protoc` 4.22.2
   - the following specification files: `google/protobuf/any.proto, google/protobuf/api.proto, google/protobuf/descriptor.proto, google/protobuf/duration.proto, google/protobuf/empty.proto, google/protobuf/field_mask.proto, google/protobuf/source_context.proto, google/protobuf/struct.proto, google/protobuf/timestamp.proto, google/protobuf/type.proto, google/protobuf/wrappers.proto`
 
@@ -142,63 +151,138 @@ the ability to detect presence on individual elements.
 These wrappers have no meaningful use within a map or a oneof since
 individual entries of a map or fields of a oneof can already detect presence.
 
-@docs Any, Api, BoolValue, BytesValue, DescriptorProto, DescriptorProto_, DoubleValue, Duration, Empty, Enum, EnumDescriptorProto, EnumOptions
-@docs EnumValue, EnumValueDescriptorProto, EnumValueOptions, ExtensionRangeOptions, Field, FieldDescriptorProto, FieldMask, FieldOptions
-@docs FileDescriptorProto, FileDescriptorSet, FileOptions, FloatValue, GeneratedCodeInfo, Int32Value, Int64Value, ListValue, MessageOptions
-@docs Method, MethodDescriptorProto, MethodOptions, Mixin, NullValue, OneofDescriptorProto, OneofOptions, Option, ServiceDescriptorProto
-@docs ServiceOptions, SourceCodeInfo, SourceContext, StringValue, Struct, Syntax, Timestamp, Type, UInt32Value, UInt64Value, UninterpretedOption
-@docs Value, decodeAny, decodeApi, decodeBoolValue, decodeBytesValue, decodeDescriptorProto, decodeDoubleValue, decodeDuration, decodeEmpty
-@docs decodeEnum, decodeEnumDescriptorProto, decodeEnumOptions, decodeEnumValue, decodeEnumValueDescriptorProto, decodeEnumValueOptions
-@docs decodeExtensionRangeOptions, decodeField, decodeFieldDescriptorProto, decodeFieldMask, decodeFieldOptions
-@docs decodeFileDescriptorProto, decodeFileDescriptorSet, decodeFileOptions, decodeFloatValue, decodeGeneratedCodeInfo, decodeInt32Value
-@docs decodeInt64Value, decodeListValue, decodeMessageOptions, decodeMethod, decodeMethodDescriptorProto, decodeMethodOptions, decodeMixin
-@docs decodeNullValue, decodeOneofDescriptorProto, decodeOneofOptions, decodeOption, decodeServiceDescriptorProto, decodeServiceOptions
-@docs decodeSourceCodeInfo, decodeSourceContext, decodeStringValue, decodeStruct, decodeSyntax, decodeTimestamp, decodeType
-@docs decodeUInt32Value, decodeUInt64Value, decodeUninterpretedOption, decodeValue, defaultAny, defaultApi, defaultBoolValue
-@docs defaultBytesValue, defaultDescriptorProto, defaultDoubleValue, defaultDuration, defaultEmpty, defaultEnum
+@docs Any, Api, BoolValue, BytesValue, DescriptorProto, DescriptorProto_, DescriptorProto_, DoubleValue, Duration, Empty, Enum, EnumDescriptorProto
+
+@docs EnumOptions, EnumValue, EnumValueDescriptorProto, EnumValueOptions, ExtensionRangeOptions, Field, FieldDescriptorProto, FieldMask
+
+@docs FieldOptions, FileDescriptorProto, FileDescriptorSet, FileOptions, FloatValue, GeneratedCodeInfo, Int32Value, Int64Value, ListValue
+
+@docs ListValue_, MessageOptions, Method, MethodDescriptorProto, MethodOptions, Mixin, OneofDescriptorProto, OneofOptions, Option
+
+@docs ServiceDescriptorProto, ServiceOptions, SourceCodeInfo, SourceContext, StringValue, Struct, Timestamp, Type, UInt32Value, UInt64Value
+
+@docs UninterpretedOption, Value, Value_, Value_, decodeAny, decodeApi, decodeBoolValue, decodeBytesValue, decodeDescriptorProto
+
+@docs decodeDoubleValue, decodeDuration, decodeEmpty, decodeEnum, decodeEnumDescriptorProto, decodeEnumOptions, decodeEnumValue
+
+@docs decodeEnumValueDescriptorProto, decodeEnumValueOptions, decodeExtensionRangeOptions, decodeField, decodeFieldDescriptorProto
+
+@docs decodeFieldMask, decodeFieldOptions, decodeFileDescriptorProto, decodeFileDescriptorSet, decodeFileOptions, decodeFloatValue
+
+@docs decodeGeneratedCodeInfo, decodeInt32Value, decodeInt64Value, decodeListValue, decodeMessageOptions, decodeMethod
+
+@docs decodeMethodDescriptorProto, decodeMethodOptions, decodeMixin, decodeOneofDescriptorProto, decodeOneofOptions, decodeOption
+
+@docs decodeServiceDescriptorProto, decodeServiceOptions, decodeSourceCodeInfo, decodeSourceContext, decodeStringValue, decodeStruct
+
+@docs decodeTimestamp, decodeType, decodeUInt32Value, decodeUInt64Value, decodeUninterpretedOption, decodeValue, defaultAny, defaultApi
+
+@docs defaultBoolValue, defaultBytesValue, defaultDescriptorProto, defaultDoubleValue, defaultDuration, defaultEmpty, defaultEnum
+
 @docs defaultEnumDescriptorProto, defaultEnumOptions, defaultEnumValue, defaultEnumValueDescriptorProto, defaultEnumValueOptions
+
 @docs defaultExtensionRangeOptions, defaultField, defaultFieldDescriptorProto, defaultFieldMask, defaultFieldOptions
+
 @docs defaultFileDescriptorProto, defaultFileDescriptorSet, defaultFileOptions, defaultFloatValue, defaultGeneratedCodeInfo
+
 @docs defaultInt32Value, defaultInt64Value, defaultListValue, defaultMessageOptions, defaultMethod, defaultMethodDescriptorProto
-@docs defaultMethodOptions, defaultMixin, defaultNullValue, defaultOneofDescriptorProto, defaultOneofOptions, defaultOption
-@docs defaultServiceDescriptorProto, defaultServiceOptions, defaultSourceCodeInfo, defaultSourceContext, defaultStringValue
-@docs defaultStruct, defaultSyntax, defaultTimestamp, defaultType, defaultUInt32Value, defaultUInt64Value, defaultUninterpretedOption
-@docs defaultValue, encodeAny, encodeApi, encodeBoolValue, encodeBytesValue, encodeDescriptorProto, encodeDoubleValue, encodeDuration
-@docs encodeEmpty, encodeEnum, encodeEnumDescriptorProto, encodeEnumOptions, encodeEnumValue, encodeEnumValueDescriptorProto
-@docs encodeEnumValueOptions, encodeExtensionRangeOptions, encodeField, encodeFieldDescriptorProto, encodeFieldMask, encodeFieldOptions
-@docs encodeFileDescriptorProto, encodeFileDescriptorSet, encodeFileOptions, encodeFloatValue, encodeGeneratedCodeInfo, encodeInt32Value
-@docs encodeInt64Value, encodeListValue, encodeMessageOptions, encodeMethod, encodeMethodDescriptorProto, encodeMethodOptions, encodeMixin
-@docs encodeNullValue, encodeOneofDescriptorProto, encodeOneofOptions, encodeOption, encodeServiceDescriptorProto, encodeServiceOptions
-@docs encodeSourceCodeInfo, encodeSourceContext, encodeStringValue, encodeStruct, encodeSyntax, encodeTimestamp, encodeType
-@docs encodeUInt32Value, encodeUInt64Value, encodeUninterpretedOption, encodeValue, fieldNumbersAny, fieldNumbersApi
-@docs fieldNumbersBoolValue, fieldNumbersBytesValue, fieldNumbersDescriptorProto, fieldNumbersDoubleValue, fieldNumbersDuration
-@docs fieldNumbersEmpty, fieldNumbersEnum, fieldNumbersEnumDescriptorProto, fieldNumbersEnumOptions, fieldNumbersEnumValue
-@docs fieldNumbersEnumValueDescriptorProto, fieldNumbersEnumValueOptions, fieldNumbersExtensionRangeOptions, fieldNumbersField
-@docs fieldNumbersFieldDescriptorProto, fieldNumbersFieldMask, fieldNumbersFieldOptions, fieldNumbersFileDescriptorProto
-@docs fieldNumbersFileDescriptorSet, fieldNumbersFileOptions, fieldNumbersFloatValue, fieldNumbersGeneratedCodeInfo
-@docs fieldNumbersInt32Value, fieldNumbersInt64Value, fieldNumbersListValue, fieldNumbersMessageOptions, fieldNumbersMethod
-@docs fieldNumbersMethodDescriptorProto, fieldNumbersMethodOptions, fieldNumbersMixin, fieldNumbersNullValue
+
+@docs defaultMethodOptions, defaultMixin, defaultOneofDescriptorProto, defaultOneofOptions, defaultOption, defaultServiceDescriptorProto
+
+@docs defaultServiceOptions, defaultSourceCodeInfo, defaultSourceContext, defaultStringValue, defaultStruct, defaultTimestamp, defaultType
+
+@docs defaultUInt32Value, defaultUInt64Value, defaultUninterpretedOption, defaultValue, encodeAny, encodeApi, encodeBoolValue
+
+@docs encodeBytesValue, encodeDescriptorProto, encodeDoubleValue, encodeDuration, encodeEmpty, encodeEnum, encodeEnumDescriptorProto
+
+@docs encodeEnumOptions, encodeEnumValue, encodeEnumValueDescriptorProto, encodeEnumValueOptions, encodeExtensionRangeOptions
+
+@docs encodeField, encodeFieldDescriptorProto, encodeFieldMask, encodeFieldOptions, encodeFileDescriptorProto, encodeFileDescriptorSet
+
+@docs encodeFileOptions, encodeFloatValue, encodeGeneratedCodeInfo, encodeInt32Value, encodeInt64Value, encodeListValue
+
+@docs encodeMessageOptions, encodeMethod, encodeMethodDescriptorProto, encodeMethodOptions, encodeMixin, encodeOneofDescriptorProto
+
+@docs encodeOneofOptions, encodeOption, encodeServiceDescriptorProto, encodeServiceOptions, encodeSourceCodeInfo, encodeSourceContext
+
+@docs encodeStringValue, encodeStruct, encodeTimestamp, encodeType, encodeUInt32Value, encodeUInt64Value, encodeUninterpretedOption
+
+@docs encodeValue, fieldNumbersAny, fieldNumbersApi, fieldNumbersBoolValue, fieldNumbersBytesValue, fieldNumbersDescriptorProto
+
+@docs fieldNumbersDoubleValue, fieldNumbersDuration, fieldNumbersEmpty, fieldNumbersEnum, fieldNumbersEnumDescriptorProto
+
+@docs fieldNumbersEnumOptions, fieldNumbersEnumValue, fieldNumbersEnumValueDescriptorProto, fieldNumbersEnumValueOptions
+
+@docs fieldNumbersExtensionRangeOptions, fieldNumbersField, fieldNumbersFieldDescriptorProto, fieldNumbersFieldMask
+
+@docs fieldNumbersFieldOptions, fieldNumbersFileDescriptorProto, fieldNumbersFileDescriptorSet, fieldNumbersFileOptions
+
+@docs fieldNumbersFloatValue, fieldNumbersGeneratedCodeInfo, fieldNumbersInt32Value, fieldNumbersInt64Value, fieldNumbersListValue
+
+@docs fieldNumbersMessageOptions, fieldNumbersMethod, fieldNumbersMethodDescriptorProto, fieldNumbersMethodOptions, fieldNumbersMixin
+
 @docs fieldNumbersOneofDescriptorProto, fieldNumbersOneofOptions, fieldNumbersOption, fieldNumbersServiceDescriptorProto
+
 @docs fieldNumbersServiceOptions, fieldNumbersSourceCodeInfo, fieldNumbersSourceContext, fieldNumbersStringValue, fieldNumbersStruct
-@docs fieldNumbersSyntax, fieldNumbersTimestamp, fieldNumbersType, fieldNumbersUInt32Value, fieldNumbersUInt64Value
-@docs fieldNumbersUninterpretedOption, fieldNumbersValue, fromInternalNullValue, fromInternalSyntax, jsonEncodeAny, jsonEncodeApi
-@docs jsonEncodeBoolValue, jsonEncodeBytesValue, jsonEncodeDescriptorProto, jsonEncodeDoubleValue, jsonEncodeDuration, jsonEncodeEmpty
-@docs jsonEncodeEnum, jsonEncodeEnumDescriptorProto, jsonEncodeEnumOptions, jsonEncodeEnumValue, jsonEncodeEnumValueDescriptorProto
+
+@docs fieldNumbersTimestamp, fieldNumbersType, fieldNumbersUInt32Value, fieldNumbersUInt64Value, fieldNumbersUninterpretedOption
+
+@docs fieldNumbersValue, jsonDecodeAny, jsonDecodeApi, jsonDecodeBoolValue, jsonDecodeBytesValue, jsonDecodeDescriptorProto
+
+@docs jsonDecodeDoubleValue, jsonDecodeDuration, jsonDecodeEmpty, jsonDecodeEnum, jsonDecodeEnumDescriptorProto, jsonDecodeEnumOptions
+
+@docs jsonDecodeEnumValue, jsonDecodeEnumValueDescriptorProto, jsonDecodeEnumValueOptions, jsonDecodeExtensionRangeOptions
+
+@docs jsonDecodeField, jsonDecodeFieldDescriptorProto, jsonDecodeFieldMask, jsonDecodeFieldOptions, jsonDecodeFileDescriptorProto
+
+@docs jsonDecodeFileDescriptorSet, jsonDecodeFileOptions, jsonDecodeFloatValue, jsonDecodeGeneratedCodeInfo, jsonDecodeInt32Value
+
+@docs jsonDecodeInt64Value, jsonDecodeListValue, jsonDecodeMessageOptions, jsonDecodeMethod, jsonDecodeMethodDescriptorProto
+
+@docs jsonDecodeMethodOptions, jsonDecodeMixin, jsonDecodeOneofDescriptorProto, jsonDecodeOneofOptions, jsonDecodeOption
+
+@docs jsonDecodeServiceDescriptorProto, jsonDecodeServiceOptions, jsonDecodeSourceCodeInfo, jsonDecodeSourceContext
+
+@docs jsonDecodeStringValue, jsonDecodeStruct, jsonDecodeTimestamp, jsonDecodeType, jsonDecodeUInt32Value, jsonDecodeUInt64Value
+
+@docs jsonDecodeUninterpretedOption, jsonDecodeValue, jsonEncodeAny, jsonEncodeApi, jsonEncodeBoolValue, jsonEncodeBytesValue
+
+@docs jsonEncodeDescriptorProto, jsonEncodeDoubleValue, jsonEncodeDuration, jsonEncodeEmpty, jsonEncodeEnum
+
+@docs jsonEncodeEnumDescriptorProto, jsonEncodeEnumOptions, jsonEncodeEnumValue, jsonEncodeEnumValueDescriptorProto
+
 @docs jsonEncodeEnumValueOptions, jsonEncodeExtensionRangeOptions, jsonEncodeField, jsonEncodeFieldDescriptorProto
+
 @docs jsonEncodeFieldMask, jsonEncodeFieldOptions, jsonEncodeFileDescriptorProto, jsonEncodeFileDescriptorSet, jsonEncodeFileOptions
+
 @docs jsonEncodeFloatValue, jsonEncodeGeneratedCodeInfo, jsonEncodeInt32Value, jsonEncodeInt64Value, jsonEncodeListValue
+
 @docs jsonEncodeMessageOptions, jsonEncodeMethod, jsonEncodeMethodDescriptorProto, jsonEncodeMethodOptions, jsonEncodeMixin
-@docs jsonEncodeNullValue, jsonEncodeOneofDescriptorProto, jsonEncodeOneofOptions, jsonEncodeOption, jsonEncodeServiceDescriptorProto
+
+@docs jsonEncodeOneofDescriptorProto, jsonEncodeOneofOptions, jsonEncodeOption, jsonEncodeServiceDescriptorProto
+
 @docs jsonEncodeServiceOptions, jsonEncodeSourceCodeInfo, jsonEncodeSourceContext, jsonEncodeStringValue, jsonEncodeStruct
-@docs jsonEncodeSyntax, jsonEncodeTimestamp, jsonEncodeType, jsonEncodeUInt32Value, jsonEncodeUInt64Value, jsonEncodeUninterpretedOption
-@docs jsonEncodeValue, toInternalNullValue, toInternalSyntax, unwrapDescriptorProto, wrapDescriptorProto
+
+@docs jsonEncodeTimestamp, jsonEncodeType, jsonEncodeUInt32Value, jsonEncodeUInt64Value, jsonEncodeUninterpretedOption, jsonEncodeValue
+
+@docs unwrapDescriptorProto, unwrapDescriptorProto, unwrapListValue, unwrapValue, unwrapValue, wrapDescriptorProto, wrapDescriptorProto
+
+@docs wrapListValue, wrapValue, wrapValue
 
 -}
 
+import Json.Decode
 import Json.Encode
 import Proto.Google.Protobuf.Internals_
 import Protobuf.Decode
 import Protobuf.Encode
+
+
+{-| Declares how to decode a `BytesValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeBytesValue : Json.Decode.Decoder BytesValue
+jsonDecodeBytesValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__BytesValue
 
 
 {-| Encode a `BytesValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -253,6 +337,13 @@ type alias BytesValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__BytesValue
 
 
+{-| Declares how to decode a `StringValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeStringValue : Json.Decode.Decoder StringValue
+jsonDecodeStringValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__StringValue
+
+
 {-| Encode a `StringValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeStringValue : StringValue -> Json.Encode.Value
@@ -303,6 +394,13 @@ The string value.
 -}
 type alias StringValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__StringValue
+
+
+{-| Declares how to decode a `BoolValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeBoolValue : Json.Decode.Decoder BoolValue
+jsonDecodeBoolValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__BoolValue
 
 
 {-| Encode a `BoolValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -357,6 +455,13 @@ type alias BoolValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__BoolValue
 
 
+{-| Declares how to decode a `UInt32Value` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeUInt32Value : Json.Decode.Decoder UInt32Value
+jsonDecodeUInt32Value =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__UInt32Value
+
+
 {-| Encode a `UInt32Value` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeUInt32Value : UInt32Value -> Json.Encode.Value
@@ -407,6 +512,13 @@ The uint32 value.
 -}
 type alias UInt32Value =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__UInt32Value
+
+
+{-| Declares how to decode a `Int32Value` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeInt32Value : Json.Decode.Decoder Int32Value
+jsonDecodeInt32Value =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Int32Value
 
 
 {-| Encode a `Int32Value` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -461,6 +573,13 @@ type alias Int32Value =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Int32Value
 
 
+{-| Declares how to decode a `UInt64Value` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeUInt64Value : Json.Decode.Decoder UInt64Value
+jsonDecodeUInt64Value =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__UInt64Value
+
+
 {-| Encode a `UInt64Value` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeUInt64Value : UInt64Value -> Json.Encode.Value
@@ -511,6 +630,13 @@ The uint64 value.
 -}
 type alias UInt64Value =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__UInt64Value
+
+
+{-| Declares how to decode a `Int64Value` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeInt64Value : Json.Decode.Decoder Int64Value
+jsonDecodeInt64Value =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Int64Value
 
 
 {-| Encode a `Int64Value` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -565,6 +691,13 @@ type alias Int64Value =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Int64Value
 
 
+{-| Declares how to decode a `FloatValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFloatValue : Json.Decode.Decoder FloatValue
+jsonDecodeFloatValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FloatValue
+
+
 {-| Encode a `FloatValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeFloatValue : FloatValue -> Json.Encode.Value
@@ -617,6 +750,13 @@ type alias FloatValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FloatValue
 
 
+{-| Declares how to decode a `DoubleValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeDoubleValue : Json.Decode.Decoder DoubleValue
+jsonDecodeDoubleValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__DoubleValue
+
+
 {-| Encode a `DoubleValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeDoubleValue : DoubleValue -> Json.Encode.Value
@@ -667,6 +807,13 @@ The double value.
 -}
 type alias DoubleValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__DoubleValue
+
+
+{-| Declares how to decode a `Timestamp` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeTimestamp : Json.Decode.Decoder Timestamp
+jsonDecodeTimestamp =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Timestamp
 
 
 {-| Encode a `Timestamp` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -819,11 +966,41 @@ type alias Timestamp =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Timestamp
 
 
+{-| Declares how to decode a `ListValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeListValue : Json.Decode.Decoder ListValue
+jsonDecodeListValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__ListValue
+
+
 {-| Encode a `ListValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeListValue : ListValue -> Json.Encode.Value
 jsonEncodeListValue =
     Proto.Google.Protobuf.Internals_.jsonEncodeProto__Google__Protobuf__ListValue
+
+
+{-| Unwrap a `ListValue` from its wrapper `ListValue_.`
+-}
+unwrapListValue : ListValue_ -> ListValue
+unwrapListValue =
+    Proto.Google.Protobuf.Internals_.unwrapProto__Google__Protobuf__ListValue
+
+
+{-| Wrap a `ListValue` into its wrapper `ListValue_.`
+-}
+wrapListValue : ListValue -> ListValue_
+wrapListValue =
+    Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ListValue_
+
+
+{-| Type wrapper for alias type `ListValue` to avoid unlimited recursion.
+
+For a more in-depth explanation why we need this, read this: <https://github.com/elm/compiler/blob/master/hints/recursive-alias.md>.
+
+-}
+type alias ListValue_ =
+    Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ListValue_
 
 
 {-| The field numbers for the fields of `ListValue`. This is mostly useful for internals, like documentation generation.
@@ -871,11 +1048,41 @@ type alias ListValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ListValue
 
 
+{-| Declares how to decode a `Value` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeValue : Json.Decode.Decoder Value
+jsonDecodeValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Value
+
+
 {-| Encode a `Value` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeValue : Value -> Json.Encode.Value
 jsonEncodeValue =
     Proto.Google.Protobuf.Internals_.jsonEncodeProto__Google__Protobuf__Value
+
+
+{-| Unwrap a `Value` from its wrapper `Value_.`
+-}
+unwrapValue : Value_ -> Value
+unwrapValue =
+    Proto.Google.Protobuf.Internals_.unwrapProto__Google__Protobuf__Value
+
+
+{-| Wrap a `Value` into its wrapper `Value_.`
+-}
+wrapValue : Value -> Value_
+wrapValue =
+    Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Value_
+
+
+{-| Type wrapper for alias type `Value` to avoid unlimited recursion.
+
+For a more in-depth explanation why we need this, read this: <https://github.com/elm/compiler/blob/master/hints/recursive-alias.md>.
+
+-}
+type alias Value_ =
+    Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Value_
 
 
 {-| The field numbers for the fields of `Value`. This is mostly useful for internals, like documentation generation.
@@ -916,6 +1123,13 @@ The JSON representation for `Value` is JSON value.
 -}
 type alias Value =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Value
+
+
+{-| Declares how to decode a `Struct` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeStruct : Json.Decode.Decoder Struct
+jsonDecodeStruct =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Struct
 
 
 {-| Encode a `Struct` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -973,6 +1187,13 @@ Unordered map of dynamically typed values.
 -}
 type alias Struct =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Struct
+
+
+{-| Declares how to decode a `Duration` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeDuration : Json.Decode.Decoder Duration
+jsonDecodeDuration =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Duration
 
 
 {-| Encode a `Duration` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -1096,6 +1317,13 @@ type alias Duration =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Duration
 
 
+{-| Declares how to decode a `Empty` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEmpty : Json.Decode.Decoder Empty
+jsonDecodeEmpty =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Empty
+
+
 {-| Encode a `Empty` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeEmpty : Empty -> Json.Encode.Value
@@ -1142,6 +1370,13 @@ or the response type of an API method. For instance:
 -}
 type alias Empty =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Empty
+
+
+{-| Declares how to decode a `Mixin` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeMixin : Json.Decode.Decoder Mixin
+jsonDecodeMixin =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Mixin
 
 
 {-| Encode a `Mixin` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -1277,6 +1512,13 @@ type alias Mixin =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Mixin
 
 
+{-| Declares how to decode a `Method` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeMethod : Json.Decode.Decoder Method
+jsonDecodeMethod =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Method
+
+
 {-| Encode a `Method` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeMethod : Method -> Json.Encode.Value
@@ -1363,6 +1605,13 @@ The source syntax of this method.
 -}
 type alias Method =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Method
+
+
+{-| Declares how to decode a `Api` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeApi : Json.Decode.Decoder Api
+jsonDecodeApi =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Api
 
 
 {-| Encode a `Api` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -1473,6 +1722,13 @@ type alias Api =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Api
 
 
+{-| Declares how to decode a `Option` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeOption : Json.Decode.Decoder Option
+jsonDecodeOption =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Option
+
+
 {-| Encode a `Option` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeOption : Option -> Json.Encode.Value
@@ -1535,6 +1791,13 @@ type alias Option =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Option
 
 
+{-| Declares how to decode a `EnumValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnumValue : Json.Decode.Decoder EnumValue
+jsonDecodeEnumValue =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__EnumValue
+
+
 {-| Encode a `EnumValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeEnumValue : EnumValue -> Json.Encode.Value
@@ -1593,6 +1856,13 @@ Protocol buffer options.
 -}
 type alias EnumValue =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__EnumValue
+
+
+{-| Declares how to decode a `Enum` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnum : Json.Decode.Decoder Enum
+jsonDecodeEnum =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Enum
 
 
 {-| Encode a `Enum` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -1663,6 +1933,13 @@ The source syntax.
 -}
 type alias Enum =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Enum
+
+
+{-| Declares how to decode a `Field` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeField : Json.Decode.Decoder Field
+jsonDecodeField =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Field
 
 
 {-| Encode a `Field` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -1773,6 +2050,13 @@ type alias Field =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Field
 
 
+{-| Declares how to decode a `Type` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeType : Json.Decode.Decoder Type
+jsonDecodeType =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Type
+
+
 {-| Encode a `Type` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeType : Type -> Json.Encode.Value
@@ -1846,6 +2130,13 @@ The source syntax.
 -}
 type alias Type =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Type
+
+
+{-| Declares how to decode a `Any` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeAny : Json.Decode.Decoder Any
+jsonDecodeAny =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__Any
 
 
 {-| Encode a `Any` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2013,6 +2304,13 @@ type alias Any =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Any
 
 
+{-| Declares how to decode a `SourceContext` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeSourceContext : Json.Decode.Decoder SourceContext
+jsonDecodeSourceContext =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__SourceContext
+
+
 {-| Encode a `SourceContext` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeSourceContext : SourceContext -> Json.Encode.Value
@@ -2063,6 +2361,13 @@ protobuf element. For example: `"google/protobuf/source_context.proto"`.
 -}
 type alias SourceContext =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SourceContext
+
+
+{-| Declares how to decode a `FieldMask` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFieldMask : Json.Decode.Decoder FieldMask
+jsonDecodeFieldMask =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FieldMask
 
 
 {-| Encode a `FieldMask` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2318,6 +2623,13 @@ type alias FieldMask =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FieldMask
 
 
+{-| Declares how to decode a `GeneratedCodeInfo` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeGeneratedCodeInfo : Json.Decode.Decoder GeneratedCodeInfo
+jsonDecodeGeneratedCodeInfo =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__GeneratedCodeInfo
+
+
 {-| Encode a `GeneratedCodeInfo` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeGeneratedCodeInfo : GeneratedCodeInfo -> Json.Encode.Value
@@ -2369,6 +2681,13 @@ of its generating .proto file.
 -}
 type alias GeneratedCodeInfo =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__GeneratedCodeInfo
+
+
+{-| Declares how to decode a `SourceCodeInfo` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeSourceCodeInfo : Json.Decode.Decoder SourceCodeInfo
+jsonDecodeSourceCodeInfo =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__SourceCodeInfo
 
 
 {-| Encode a `SourceCodeInfo` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2468,6 +2787,13 @@ type alias SourceCodeInfo =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SourceCodeInfo
 
 
+{-| Declares how to decode a `UninterpretedOption` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeUninterpretedOption : Json.Decode.Decoder UninterpretedOption
+jsonDecodeUninterpretedOption =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__UninterpretedOption
+
+
 {-| Encode a `UninterpretedOption` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeUninterpretedOption : UninterpretedOption -> Json.Encode.Value
@@ -2530,6 +2856,13 @@ identified it as during parsing. Exactly one of these should be set.
 -}
 type alias UninterpretedOption =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__UninterpretedOption
+
+
+{-| Declares how to decode a `MethodOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeMethodOptions : Json.Decode.Decoder MethodOptions
+jsonDecodeMethodOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__MethodOptions
 
 
 {-| Encode a `MethodOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2595,6 +2928,13 @@ type alias MethodOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__MethodOptions
 
 
+{-| Declares how to decode a `ServiceOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeServiceOptions : Json.Decode.Decoder ServiceOptions
+jsonDecodeServiceOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__ServiceOptions
+
+
 {-| Encode a `ServiceOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeServiceOptions : ServiceOptions -> Json.Encode.Value
@@ -2658,6 +2998,13 @@ type alias ServiceOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ServiceOptions
 
 
+{-| Declares how to decode a `EnumValueOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnumValueOptions : Json.Decode.Decoder EnumValueOptions
+jsonDecodeEnumValueOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__EnumValueOptions
+
+
 {-| Encode a `EnumValueOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeEnumValueOptions : EnumValueOptions -> Json.Encode.Value
@@ -2714,6 +3061,13 @@ The parser stores options it doesn't recognize here. See above.
 -}
 type alias EnumValueOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__EnumValueOptions
+
+
+{-| Declares how to decode a `EnumOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnumOptions : Json.Decode.Decoder EnumOptions
+jsonDecodeEnumOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__EnumOptions
 
 
 {-| Encode a `EnumOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2790,6 +3144,13 @@ type alias EnumOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__EnumOptions
 
 
+{-| Declares how to decode a `OneofOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeOneofOptions : Json.Decode.Decoder OneofOptions
+jsonDecodeOneofOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__OneofOptions
+
+
 {-| Encode a `OneofOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeOneofOptions : OneofOptions -> Json.Encode.Value
@@ -2838,6 +3199,13 @@ The parser stores options it doesn't recognize here. See above.
 -}
 type alias OneofOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__OneofOptions
+
+
+{-| Declares how to decode a `FieldOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFieldOptions : Json.Decode.Decoder FieldOptions
+jsonDecodeFieldOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FieldOptions
 
 
 {-| Encode a `FieldOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -2994,6 +3362,13 @@ type alias FieldOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FieldOptions
 
 
+{-| Declares how to decode a `MessageOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeMessageOptions : Json.Decode.Decoder MessageOptions
+jsonDecodeMessageOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__MessageOptions
+
+
 {-| Encode a `MessageOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeMessageOptions : MessageOptions -> Json.Encode.Value
@@ -3125,6 +3500,13 @@ The parser stores options it doesn't recognize here. See above.
 -}
 type alias MessageOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__MessageOptions
+
+
+{-| Declares how to decode a `FileOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFileOptions : Json.Decode.Decoder FileOptions
+jsonDecodeFileOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FileOptions
 
 
 {-| Encode a `FileOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -3357,6 +3739,13 @@ type alias FileOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FileOptions
 
 
+{-| Declares how to decode a `MethodDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeMethodDescriptorProto : Json.Decode.Decoder MethodDescriptorProto
+jsonDecodeMethodDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__MethodDescriptorProto
+
+
 {-| Encode a `MethodDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeMethodDescriptorProto : MethodDescriptorProto -> Json.Encode.Value
@@ -3418,6 +3807,13 @@ type alias MethodDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__MethodDescriptorProto
 
 
+{-| Declares how to decode a `ServiceDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeServiceDescriptorProto : Json.Decode.Decoder ServiceDescriptorProto
+jsonDecodeServiceDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__ServiceDescriptorProto
+
+
 {-| Encode a `ServiceDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeServiceDescriptorProto : ServiceDescriptorProto -> Json.Encode.Value
@@ -3459,6 +3855,13 @@ type alias ServiceDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ServiceDescriptorProto
 
 
+{-| Declares how to decode a `EnumValueDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnumValueDescriptorProto : Json.Decode.Decoder EnumValueDescriptorProto
+jsonDecodeEnumValueDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__EnumValueDescriptorProto
+
+
 {-| Encode a `EnumValueDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeEnumValueDescriptorProto : EnumValueDescriptorProto -> Json.Encode.Value
@@ -3498,6 +3901,13 @@ encodeEnumValueDescriptorProto =
 -}
 type alias EnumValueDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__EnumValueDescriptorProto
+
+
+{-| Declares how to decode a `EnumDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeEnumDescriptorProto : Json.Decode.Decoder EnumDescriptorProto
+jsonDecodeEnumDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__EnumDescriptorProto
 
 
 {-| Encode a `EnumDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -3558,6 +3968,13 @@ type alias EnumDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__EnumDescriptorProto
 
 
+{-| Declares how to decode a `OneofDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeOneofDescriptorProto : Json.Decode.Decoder OneofDescriptorProto
+jsonDecodeOneofDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__OneofDescriptorProto
+
+
 {-| Encode a `OneofDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeOneofDescriptorProto : OneofDescriptorProto -> Json.Encode.Value
@@ -3597,6 +4014,13 @@ encodeOneofDescriptorProto =
 -}
 type alias OneofDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__OneofDescriptorProto
+
+
+{-| Declares how to decode a `FieldDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFieldDescriptorProto : Json.Decode.Decoder FieldDescriptorProto
+jsonDecodeFieldDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FieldDescriptorProto
 
 
 {-| Encode a `FieldDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -3724,6 +4148,13 @@ type alias FieldDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FieldDescriptorProto
 
 
+{-| Declares how to decode a `ExtensionRangeOptions` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeExtensionRangeOptions : Json.Decode.Decoder ExtensionRangeOptions
+jsonDecodeExtensionRangeOptions =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__ExtensionRangeOptions
+
+
 {-| Encode a `ExtensionRangeOptions` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeExtensionRangeOptions : ExtensionRangeOptions -> Json.Encode.Value
@@ -3772,6 +4203,13 @@ The parser stores options it doesn't recognize here. See above.
 -}
 type alias ExtensionRangeOptions =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__ExtensionRangeOptions
+
+
+{-| Declares how to decode a `DescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeDescriptorProto : Json.Decode.Decoder DescriptorProto
+jsonDecodeDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__DescriptorProto
 
 
 {-| Encode a `DescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -3857,6 +4295,13 @@ A given name may only be reserved once.
 -}
 type alias DescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__DescriptorProto
+
+
+{-| Declares how to decode a `FileDescriptorProto` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFileDescriptorProto : Json.Decode.Decoder FileDescriptorProto
+jsonDecodeFileDescriptorProto =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FileDescriptorProto
 
 
 {-| Encode a `FileDescriptorProto` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
@@ -3970,6 +4415,13 @@ type alias FileDescriptorProto =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FileDescriptorProto
 
 
+{-| Declares how to decode a `FileDescriptorSet` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
+-}
+jsonDecodeFileDescriptorSet : Json.Decode.Decoder FileDescriptorSet
+jsonDecodeFileDescriptorSet =
+    Proto.Google.Protobuf.Internals_.jsonDecodeProto__Google__Protobuf__FileDescriptorSet
+
+
 {-| Encode a `FileDescriptorSet` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
 -}
 jsonEncodeFileDescriptorSet : FileDescriptorSet -> Json.Encode.Value
@@ -4010,171 +4462,3 @@ files it parses.
 -}
 type alias FileDescriptorSet =
     Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__FileDescriptorSet
-
-
-{-| Encode a `NullValue` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
--}
-jsonEncodeNullValue : NullValue -> Json.Encode.Value
-jsonEncodeNullValue =
-    toInternalNullValue >> Proto.Google.Protobuf.Internals_.jsonEncodeProto__Google__Protobuf__NullValue
-
-
-{-| The field numbers for the fields of `NullValue`. This is mostly useful for internals, like documentation generation.
--}
-fieldNumbersNullValue : NullValue -> Int
-fieldNumbersNullValue n_ =
-    case n_ of
-        NULLVALUE ->
-            0
-
-        NullValueUnrecognized_ m_ ->
-            m_
-
-
-{-| Default for NullValue. Should only be used for 'required' decoders as an initial value.
--}
-defaultNullValue : NullValue
-defaultNullValue =
-    NULLVALUE
-
-
-{-| Convert a `NullValue` into its internal representation `Proto__Google__Protobuf__NullValue`.
-
-Using two different types is necessary to avoid recursive module references while having readable constructor names.
-
--}
-toInternalNullValue : NullValue -> Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NullValue
-toInternalNullValue data_ =
-    case data_ of
-        NULLVALUE ->
-            Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NULLVALUE
-
-        NullValueUnrecognized_ n_ ->
-            Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NullValueUnrecognized_ n_
-
-
-{-| Convert the internal type `Proto__Google__Protobuf__NullValue` into a `NullValue`.
-
-Using two different types is necessary to avoid recursive module references while having readable constructor names.
-
--}
-fromInternalNullValue : Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NullValue -> NullValue
-fromInternalNullValue data_ =
-    case data_ of
-        Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NULLVALUE ->
-            NULLVALUE
-
-        Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__NullValueUnrecognized_ n_ ->
-            NullValueUnrecognized_ n_
-
-
-{-| Declares how to encode a `NullValue` to Bytes. To actually perform the conversion to Bytes, you need to use Protobuf.Encode.encode from eriktim/elm-protocol-buffers.
--}
-encodeNullValue : NullValue -> Protobuf.Encode.Encoder
-encodeNullValue =
-    toInternalNullValue >> Proto.Google.Protobuf.Internals_.encodeProto__Google__Protobuf__NullValue
-
-
-{-| Declares how to decode a `NullValue` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
--}
-decodeNullValue : Protobuf.Decode.Decoder NullValue
-decodeNullValue =
-    Protobuf.Decode.map fromInternalNullValue Proto.Google.Protobuf.Internals_.decodeProto__Google__Protobuf__NullValue
-
-
-{-| `NullValue` is a singleton enumeration to represent the null value for the
-`Value` type union.
-
-The JSON representation for `NullValue` is JSON `null`.
-
--}
-type NullValue
-    = NULLVALUE
-    | NullValueUnrecognized_ Int
-
-
-{-| Encode a `Syntax` to JSON. Uses the canonical encoding described here: <https://protobuf.dev/programming-guides/proto3/#json>
--}
-jsonEncodeSyntax : Syntax -> Json.Encode.Value
-jsonEncodeSyntax =
-    toInternalSyntax >> Proto.Google.Protobuf.Internals_.jsonEncodeProto__Google__Protobuf__Syntax
-
-
-{-| The field numbers for the fields of `Syntax`. This is mostly useful for internals, like documentation generation.
--}
-fieldNumbersSyntax : Syntax -> Int
-fieldNumbersSyntax n_ =
-    case n_ of
-        SYNTAXPROTO2 ->
-            0
-
-        SYNTAXPROTO3 ->
-            1
-
-        SyntaxUnrecognized_ m_ ->
-            m_
-
-
-{-| Default for Syntax. Should only be used for 'required' decoders as an initial value.
--}
-defaultSyntax : Syntax
-defaultSyntax =
-    SYNTAXPROTO2
-
-
-{-| Convert a `Syntax` into its internal representation `Proto__Google__Protobuf__Syntax`.
-
-Using two different types is necessary to avoid recursive module references while having readable constructor names.
-
--}
-toInternalSyntax : Syntax -> Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Syntax
-toInternalSyntax data_ =
-    case data_ of
-        SYNTAXPROTO2 ->
-            Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SYNTAXPROTO2
-
-        SYNTAXPROTO3 ->
-            Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SYNTAXPROTO3
-
-        SyntaxUnrecognized_ n_ ->
-            Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SyntaxUnrecognized_ n_
-
-
-{-| Convert the internal type `Proto__Google__Protobuf__Syntax` into a `Syntax`.
-
-Using two different types is necessary to avoid recursive module references while having readable constructor names.
-
--}
-fromInternalSyntax : Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__Syntax -> Syntax
-fromInternalSyntax data_ =
-    case data_ of
-        Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SYNTAXPROTO2 ->
-            SYNTAXPROTO2
-
-        Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SYNTAXPROTO3 ->
-            SYNTAXPROTO3
-
-        Proto.Google.Protobuf.Internals_.Proto__Google__Protobuf__SyntaxUnrecognized_ n_ ->
-            SyntaxUnrecognized_ n_
-
-
-{-| Declares how to encode a `Syntax` to Bytes. To actually perform the conversion to Bytes, you need to use Protobuf.Encode.encode from eriktim/elm-protocol-buffers.
--}
-encodeSyntax : Syntax -> Protobuf.Encode.Encoder
-encodeSyntax =
-    toInternalSyntax >> Proto.Google.Protobuf.Internals_.encodeProto__Google__Protobuf__Syntax
-
-
-{-| Declares how to decode a `Syntax` from Bytes. To actually perform the conversion from Bytes, you need to use Protobuf.Decode.decode from eriktim/elm-protocol-buffers.
--}
-decodeSyntax : Protobuf.Decode.Decoder Syntax
-decodeSyntax =
-    Protobuf.Decode.map fromInternalSyntax Proto.Google.Protobuf.Internals_.decodeProto__Google__Protobuf__Syntax
-
-
-{-| The syntax in which a protocol buffer element is defined.
--}
-type Syntax
-    = SYNTAXPROTO2
-    | SYNTAXPROTO3
-    | SyntaxUnrecognized_ Int
