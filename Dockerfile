@@ -3,7 +3,7 @@ RUN apk add curl findutils
 
 ARG PROTOC_REL="https://github.com/protocolbuffers/protobuf/releases"
 ARG PROTOC_VERSION="22.2"
-ARG PROTOC_GEN_ELM_VERSION="4.0.0"
+ARG PROTOC_GEN_ELM_VERSION="4.0.1"
 ARG ELM_FORMAT_VERSION="0.8.6"
 
 # Install protoc
